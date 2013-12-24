@@ -1,0 +1,10 @@
+<?php
+echo form_open('logincheck')
+<form>
+Email:
+<input type="text" method="POST" id="usr_name" name="usr_email"  />
+Password:
+<input type="password" id="usr_password" name="usr_password" />  
+<input  name="submitForm" id="submitForm" type="submit" value="Login" />
+</form>
+?>
