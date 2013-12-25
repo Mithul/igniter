@@ -1,5 +1,5 @@
 <?php
-	class Logincheck extends CI_Controller
+	class Newlogincheck extends CI_Controller
 	{
 		function __construct()
 		{
@@ -9,16 +9,24 @@
 		function index()
 		{
 			$username=$this->input->post("user");
-			$password=$this->input->post("password");
+			$password=$this->input->post("pass");
 			$result=$this->model->login($username,$password);
+			if(!isset($_SESSION['usr']))
+			{
+				session_start();
+			}
+			$_SESSION['usr']=$username;
 			if($result)
 			{
-				$this->load->view('welcome.php');
+				$_SESSION['usr']=$username;
+				$_SESSION['pass']=$password;
+				$this->load->view('privatewallview');
 
 			}
 			else
 			{	
-				echo "Not Found";
+				//echo "<font color='WHITE'>Invalid Username or Password. Try Again</font>";
+				$this->load->view('Front Page View.php');
 			}
 		}
 	}
