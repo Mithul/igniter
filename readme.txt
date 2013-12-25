@@ -8,4 +8,4 @@ git add -if u have created new files
 git status - to check what changes u will push
 git commit -m "Some meaningful message"  !!!!!DO NOT Commit if u have a bug in your app!!!! (fix it then commit)
 git push origin master
-git status -check if any changes have not been pushed
+git status -check if any changes have not been pushed 
