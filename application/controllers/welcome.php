@@ -19,7 +19,7 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('Front Page View.php');
+		$this->load->view('login.php');
 	}
 	public function logout()
 	{

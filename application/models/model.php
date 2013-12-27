@@ -3,7 +3,9 @@
 	{
 		function login($user ,$password)
 		{	
-			$result=$this->mongo_db->get_where('login', array('username' => $user,'password'=> $password ));
+			$result=$this->mongo_db->get_where('user', array('email' => $user,'pass'=> $password ));
+			
+			echo $user;
 			if($result)
 			{
 				return True;

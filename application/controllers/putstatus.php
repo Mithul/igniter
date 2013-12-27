@@ -4,7 +4,7 @@
 		function __construct()
 		{
 			parent::__construct();
-			$this->load->model('putstatusmodel');
+			$this->load->model('statusmodel');
 		}
 		function index()
 		{
@@ -16,7 +16,7 @@
 			$username=$this->input->post('user');
 			echo '</pre>';
 			$_SESSION['usr']=$username;
-			$this->putstatusmodel->input($status,$username);
+			$this->statusmodel->input($status,$username);
 			$this->load->view('privatewallview');
 		}
 	}

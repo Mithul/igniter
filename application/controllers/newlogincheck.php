@@ -25,8 +25,11 @@
 			}
 			else
 			{	
-				//echo "<font color='WHITE'>Invalid Username or Password. Try Again</font>";
-				$this->load->view('Front Page View.php');
+				
+				#echo 'try';
+				header('Location: ../');
+				#redirect('welcome') 
+				#$this->load->view('login.php');
 			}
 		}
 	}

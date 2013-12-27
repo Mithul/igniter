@@ -2,7 +2,9 @@
    if(!isset($_SESSION['usr']))
       session_start();
    if(isset($_SESSION['usr']))
+{
       $username=$_SESSION['usr'];
+}
    else
        $username="Anonymous";
 ?>
@@ -13,6 +15,7 @@
 		<title><?php echo $username; ?></title>
 		<meta charset="utf-8">
 	<link type="text/css" rel="stylesheet" href="/igniter/assets/css/bootstrap.css"/>
+<script type="text/javascript" src="/igniter/assets/js/bootstrap.min	.js"></script>
 <script type="text/javascript">
     //<![CDATA[
 
@@ -82,15 +85,38 @@
       return url.substring( hashPos + 1 );
     }
 
+$(function(){
+
+    $(".dropdown-toggle").dropdown();
+
+});  
+ 
     //]]>
     </script>
    </head>
 	<body color="WHITE" onload="init()">
-		<div class="navbar navbar-inverse navbar-fixed-top" role="navigation" float="left">
-			<div class="container">
-				<div class="navbar-header"> 
+		<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<div class="navbar-inner">
+<div class="container">
         			<a class="navbar-brand" href="http://www.kurukshetra.org.in"><h2>K! Student Portal</h2></a>
-   					<div class="container">
+
+			<ul id="tabs" class="nav pull-left">
+            			<li><a href="#about">My Status</a></li>
+            			<li><a href="#general">Public Status</a></li>
+            		</ul>
+<!--              
+<ul class="nav pull-right">
+<li><font face="monotype corsiva" align="right" size="4" color="white">Hi <?php echo $username; ?></font></li>
+<li class="dropdown">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown">Account <b class="caret"></b></a>
+<ul class="dropdown-menu">
+<li><a  href="welcome/logout">Logout &raquo;</a></li>
+</ul>
+</li>
+</ul>
+//-->
+
+   						<div class="pull-right" >
 						<table align="RIGHT">
 							<tr>
 								<td>
@@ -103,9 +129,11 @@
 								<td><a class="btn btn-primary btn-lg" role="button" href="welcome/logout">Logout &raquo;</a></p>
 							</tr>
 						</table>
-   					</div> 
+   					</div>
+
    				</div>
    			</div>
+
    		</div>
    		<div>
    			<br><br><br>
@@ -142,10 +170,7 @@
    			</center>
    		</div>
    		<br><br>
-         <ul id="tabs">
-            <li><a href="#about">My Status</a></li>
-            <li><a href="#general">Public Status</a></li>
-            </ul>
+         
       <div class="tabContent" id="about">
       <div>
          <?php
@@ -158,6 +183,13 @@
          {
               echo "<b>".$current['username']."</b>"." : ";
             echo $current['status']."\n";
+?>
+<?PHP echo form_open('deletestatus'); ?>
+<form name="status" action="" method ="post">
+<input Type="text" value=<?php echo $current['_id'];?> name="_id" hidden />
+<button type="submit" class="btn btn-lg btn-default btn-sm">Delete</button>
+</form>
+<?php
 		date_default_timezone_set('UTC');
             echo date('h:i:s m/d/y ',$current['time']->sec);
             echo "<br>\n";
@@ -178,6 +210,7 @@
 			//echo '<pre>';
 			echo "<b>".$current['username']."</b>"." : ";
 			echo $current['status']."\n";
+date_default_timezone_set('UTC');
          echo date('h:i:s m/d/y ',$current['time']->sec);
          echo "<br>\n";
 			//echo '</pre>';
